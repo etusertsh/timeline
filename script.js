@@ -249,4 +249,45 @@ function showAllEvents() {
     showAllButton.style.display = 'none';
     categoryFilter.style.display = 'flex';
 
-    timelineContainer.innerHTML = '<div class="timeline-line
+    timelineContainer.innerHTML = '<div class="timeline-line"></div>';
+
+    events.forEach(event => {
+        const eventElement = document.createElement('div');
+        eventElement.classList.add('timeline-event', event.category);
+        eventElement.setAttribute('data-year', event.year);
+        eventElement.setAttribute('data-category', event.category);
+        
+        const position = getPosition(event.year);
+        eventElement.style.left = `${position}%`;
+        
+        eventElement.innerHTML = `
+            <div class="event-bubble" title="${event.name}">
+                <div class="event-year">${event.year}</div>
+                <div class="event-name">${event.name}</div>
+            </div>
+        `;
+        
+        eventElement.addEventListener('click', () => {
+            maxZIndex++;
+            eventElement.style.zIndex = maxZIndex;
+        });
+
+        timelineContainer.appendChild(eventElement);
+    });
+
+    repositionEvents();
+}
+
+submitButton.addEventListener('click', checkAnswer);
+userAnswer.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        checkAnswer();
+    }
+});
+showAllButton.addEventListener('click', showAllEvents);
+
+document.querySelectorAll('.category-filter input[type="checkbox"]').forEach(checkbox => {
+    checkbox.addEventListener('change', handleCategoryFilter);
+});
+
+pickRandomEvent();
