@@ -4,11 +4,12 @@ const events = [
     { name: "半導體積體電路發明", year: 1958, answered: false, category: 'tech' },
     { name: "網際網路前身ARPANET上線", year: 1969, answered: false, category: 'tech' },
     { name: "個人電腦(PC)概念誕生", year: 1974, answered: false, category: 'tech' },
-    { name: "WWW全球資訊網發明", year: 1989, answered: false, category: 'tech' },
+    { name: "WWW萬維網發明", year: 1989, answered: false, category: 'tech' },
     { name: "Wi-Fi技術標準問世", year: 1997, answered: false, category: 'tech' },
 
     // 重要公司創立與里程碑 ( category: company )
     { name: "Intel成立", year: 1968, answered: false, category: 'company' },
+    { name: "Sony（索尼）成立", year: 1946, answered: false, category: 'company' }, // 新增：Sony
     { name: "Microsoft成立", year: 1975, answered: false, category: 'company' },
     { name: "Apple成立", year: 1976, answered: false, category: 'company' },
     { name: "Cisco Systems成立", year: 1984, answered: false, category: 'company' },
@@ -82,7 +83,7 @@ const quizContainer = document.querySelector('.quiz-container');
 const showAllButton = document.getElementById('show-all-button');
 const categoryFilter = document.querySelector('.category-filter');
 
-const minYear = 1950;
+const minYear = 1945; // 調整時間軸起始年份以容納Sony
 const maxYear = 2025;
 const eventCardWidth = 180;
 const eventCardHeight = 90;
@@ -248,46 +249,4 @@ function showAllEvents() {
     showAllButton.style.display = 'none';
     categoryFilter.style.display = 'flex';
 
-    timelineContainer.innerHTML = '<div class="timeline-line"></div>';
-
-    events.forEach(event => {
-        const eventElement = document.createElement('div');
-        eventElement.classList.add('timeline-event', event.category);
-        eventElement.setAttribute('data-year', event.year);
-        eventElement.setAttribute('data-category', event.category);
-        
-        const position = getPosition(event.year);
-        eventElement.style.left = `${position}%`;
-        
-        eventElement.innerHTML = `
-            <div class="event-bubble" title="${event.name}">
-                <div class="event-year">${event.year}</div>
-                <div class="event-name">${event.name}</div>
-            </div>
-        `;
-        
-        eventElement.addEventListener('click', () => {
-            maxZIndex++;
-            eventElement.style.zIndex = maxZIndex;
-        });
-
-        timelineContainer.appendChild(eventElement);
-    });
-
-    repositionEvents();
-}
-
-submitButton.addEventListener('click', checkAnswer);
-userAnswer.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-        checkAnswer();
-    }
-});
-showAllButton.addEventListener('click', showAllEvents);
-
-// 頁面載入時，為所有核取方塊添加事件監聽器
-document.querySelectorAll('.category-filter input[type="checkbox"]').forEach(checkbox => {
-    checkbox.addEventListener('change', handleCategoryFilter);
-});
-
-pickRandomEvent();
+    timelineContainer.innerHTML = '<div class="timeline-line
