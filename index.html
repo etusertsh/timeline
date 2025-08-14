@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>互動式資訊科技時間軸</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>互動式資訊科技時間軸</h1>
+
+    <div class="quiz-container">
+        <h2 id="event-question"></h2>
+        <input type="number" id="user-answer" placeholder="請輸入西元年份">
+        <button id="submit-button">送出</button>
+        <p id="feedback"></p>
+    </div>
+
+    <div class="control-panel">
+        <button id="show-all-button">全部顯示</button>
+        <div class="category-filter" style="display: none;">
+            <span>顯示類別：</span>
+            <label><input type="checkbox" name="category" value="tech" checked> 核心技術</label>
+            <label><input type="checkbox" name="category" value="company" checked> 國際企業</label>
+            <label><input type="checkbox" name="category" value="taiwan-company" checked> 台灣企業</label>
+            <label><input type="checkbox" name="category" value="china-tech" checked> 中國科技</label> <label><input type="checkbox" name="category" value="ai" checked> AI 技術</label>
+            <label><input type="checkbox" name="category" value="device" checked> 裝置</label>
+            <label><input type="checkbox" name="category" value="programming" checked> 程式語言</label>
+            <label><input type="checkbox" name="category" value="others" checked> 其他</label>
+        </div>
+    </div>
+
+    <div class="timeline-container">
+        <div class="timeline-line"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
