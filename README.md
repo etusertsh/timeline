@@ -14,3 +14,5 @@
 * 其他
 
 歷史事件以 Gemini 2.5 Flash 生成，不確定是否正確。
+
+Demo Site：[https://signup1.ckgsh.ntpc.edu.tw/timeline/](https://signup1.ckgsh.ntpc.edu.tw/timeline/)
