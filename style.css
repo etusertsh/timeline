@@ -1,54 +1,87 @@
 /*
  * 現代科技感風格的 CSS - 已優化重疊問題與分類色彩
  */
+:root {
+    /* --- Color Palette --- */
+    /* Backgrounds */
+    --bg-primary: #121212;
+    --bg-secondary: #1E1E1E;
+    --bg-input: #2D2D2D;
+
+    /* Text */
+    --text-primary: #E0E0E0;
+    --text-secondary: #333;
+    --text-dark: #121212;
+    --text-white: #FFFFFF;
+    --text-placeholder: #888;
+
+    /* Accents */
+    --accent-primary: #00FFFF;
+    --accent-primary-hover: #00E5E5;
+    --accent-danger: #FF5733;
+    --accent-danger-hover: #E54B2A;
+    --accent-gradient-end: #007BFF;
+
+    /* --- Effects --- */
+    --shadow-glow-primary: 0 0 15px rgba(0, 255, 255, 0.2);
+    --shadow-glow-primary-hover: 0 0 10px var(--accent-primary);
+    --shadow-glow-danger-hover: 0 0 10px var(--accent-danger);
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #121212;
-    color: #E0E0E0;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
     margin: 0;
     padding: 20px;
 }
 
 h1 {
-    color: #00FFFF;
-    text-shadow: 0 0 5px #00FFFF;
+    color: var(--accent-primary);
+    text-shadow: 0 0 5px var(--accent-primary);
 }
 
 /* 測驗區塊 */
 .quiz-container {
-    background: #1E1E1E;
+    background: var(--bg-secondary);
     padding: 25px;
     border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+    box-shadow: var(--shadow-glow-primary);
     margin-bottom: 20px;
     text-align: center;
 }
 
 #event-question {
-    color: #FFFFFF;
+    color: var(--text-white);
 }
 
 #user-answer {
     padding: 12px;
-    border: 1px solid #00FFFF;
+    border: 1px solid var(--accent-primary);
     border-radius: 5px;
-    background-color: #2D2D2D;
-    color: #FFFFFF;
+    background-color: var(--bg-input);
+    color: var(--text-white);
     margin-right: 15px;
     font-size: 1em;
 }
 
+#user-answer:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+    border-color: var(--accent-primary-hover);
+}
+
 #user-answer::placeholder {
-    color: #888;
+    color: var(--text-placeholder);
 }
 
 #submit-button {
     padding: 12px 25px;
-    background-color: #00FFFF;
-    color: #121212;
+    background-color: var(--accent-primary);
+    color: var(--text-dark);
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -57,8 +90,13 @@ h1 {
 }
 
 #submit-button:hover {
-    background-color: #00E5E5;
-    box-shadow: 0 0 10px #00FFFF;
+    background-color: var(--accent-primary-hover);
+    box-shadow: var(--shadow-glow-primary-hover);
+}
+
+#submit-button:focus-visible {
+    outline: 2px solid var(--accent-primary-hover);
+    outline-offset: 2px;
 }
 
 #feedback {
@@ -79,8 +117,8 @@ h1 {
 
 #show-all-button {
     padding: 12px 25px;
-    background-color: #FF5733;
-    color: #121212;
+    background-color: var(--accent-danger);
+    color: var(--text-dark);
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -89,13 +127,19 @@ h1 {
 }
 
 #show-all-button:hover {
-    background-color: #E54B2A;
-    box-shadow: 0 0 10px #FF5733;
+    background-color: var(--accent-danger-hover);
+    box-shadow: var(--shadow-glow-danger-hover);
+}
+
+/* 為鍵盤使用者提供清晰的焦點指示 */
+#show-all-button:focus-visible {
+    outline: 2px solid var(--accent-danger-hover);
+    outline-offset: 2px;
 }
 
 /* 類別篩選區塊樣式 */
 .category-filter {
-    background-color: #1E1E1E;
+    background-color: var(--bg-secondary);
     padding: 15px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
@@ -107,7 +151,7 @@ h1 {
 
 .category-filter span {
     font-weight: bold;
-    color: #00FFFF;
+    color: var(--accent-primary);
 }
 
 .category-filter label {
@@ -120,62 +164,88 @@ h1 {
     margin-right: 5px;
 }
 
+.category-filter input[type="checkbox"]:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+}
+
 
 /* 時間軸容器 */
 .timeline-container {
     position: relative;
-    width: 90%;
-    margin-top: 60px;
-    min-height: 250px;
+    width: 100%;    
+    /* 增加最小高度以確保有足夠空間容納上下卡片 */
+    min-height: 500px;
+    margin-top: 50px;
 }
 
 .timeline-line {
     position: absolute;
-    top: 50%;
+    /* 將時間軸從垂直置中改為固定的像素位置，為上方卡片留出空間 */
+    top: 250px;
     left: 0;
     width: 100%;
     height: 3px;
-    background: linear-gradient(to right, #00FFFF, #007BFF);
-    transform: translateY(-50%);
+    background: linear-gradient(to right, var(--accent-primary), var(--accent-gradient-end));
 }
 
 /* 事件字卡 */
 .timeline-event {
     position: absolute;
+    /* 將卡片的錨點也移動到與時間軸相同的位置 */
+    top: 250px;
     width: 180px;
     text-align: center;
     transition: all 0.5s ease-in-out;
     cursor: pointer;
     z-index: 1;
+    --card-scale: 1; /* 為卡片縮放定義一個變數，預設為 1 */
+}
+
+/* 當卡片被點擊或聚焦時，提高其層級並透過變數觸發縮放 */
+.timeline-event.active {
+    z-index: 10;
+    --card-scale: 1.05; /* 更新變數值以放大卡片 */
+}
+
+/* 用於高效能篩選的輔助 class */
+.timeline-event.hidden {
+    /* 使用 opacity 和 transform 可以產生淡出效果，比 display:none 更流暢 */
+    opacity: 0;
+    transform: scale(0.5);
+    pointer-events: none; /* 隱藏時不可點擊 */
 }
 
 .timeline-event .event-bubble {
-    color: #121212;
+    color: var(--text-dark);
     padding: 15px;
     border-radius: 10px;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+    /* 讓 transform 和 box-shadow 都有平滑過渡效果 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* 動態調整上下層高度，使用 calc() 限制位移量 */
 .timeline-event.up .event-bubble {
-    transform: translateY(calc(-100% - 15px - var(--layer-index) * 60px));
+    /* 使用 max() 函數來限制卡片向上的最大位移，防止其超出螢幕範圍 */
+    transform: translateY(max(-235px, calc(-100% - 15px - var(--layer-index) * 60px))) scale(var(--card-scale));
 }
 
 .timeline-event.down .event-bubble {
-    transform: translateY(calc(0% + 15px + var(--layer-index) * 60px));
+    /* 移除多餘的 0%，讓程式碼更簡潔 */
+    transform: translateY(calc(15px + var(--layer-index) * 60px)) scale(var(--card-scale));
 }
 
 /* 年份和事件名稱 */
 .timeline-event .event-year {
     font-size: 1.4em;
     font-weight: bold;
-    color: #121212;
+    color: var(--text-dark);
 }
 
 .timeline-event .event-name {
     font-size: 1.1em;
     margin-top: 8px;
-    color: #333;
+    color: var(--text-secondary);
 }
 
 /* 各類別專屬的樣式 */
@@ -185,9 +255,14 @@ h1 {
     box-shadow: 0 0 8px var(--event-color, #BDC3C7);
 }
 
+/* 當卡片 active 時，陰影也更明顯 */
+.timeline-event.active .event-bubble {
+    box-shadow: 0 0 15px 3px var(--event-color, #BDC3C7);
+}
+
 .timeline-event.tech .event-bubble {
-    --event-color: #00FFFF;
-    --event-border-color: #00E5E5;
+    --event-color: var(--accent-primary);
+    --event-border-color: var(--accent-primary-hover);
 }
 .timeline-event.company .event-bubble {
     --event-color: #F8B400;
@@ -198,8 +273,8 @@ h1 {
     --event-border-color: #E57345;
 }
 .timeline-event.china-tech .event-bubble { /* 這裡已修改 */
-    --event-color: #FF5733;
-    --event-border-color: #E54B2A;
+    --event-color: var(--accent-danger);
+    --event-border-color: var(--accent-danger-hover);
 }
 .timeline-event.ai .event-bubble {
     --event-color: #9B59B6;
@@ -216,4 +291,85 @@ h1 {
 .timeline-event.others .event-bubble {
     --event-color: #BDC3C7;
     --event-border-color: #A0A0A0;
+}
+
+/* --- Responsive Design for Mobile --- */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+        overflow-x: hidden; /* 防止意外的水平滾動 */
+    }
+
+    h1 {
+        font-size: 1.8em;
+        text-align: center;
+    }
+
+    /* 讓測驗區塊的輸入框和按鈕堆疊 */
+    #user-answer {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    #submit-button {
+        width: 100%;
+    }
+
+    /* 將時間軸容器轉換為垂直佈局 */
+    .timeline-container {
+        width: 100%;
+        margin-top: 30px;
+        padding-left: 30px; /* 為垂直線和圓點預留空間 */
+        box-sizing: border-box;
+    }
+
+    .timeline-line {
+        /* 將水平線變為垂直線，並移到左側 */
+        left: 15px;
+        top: 0;
+        width: 3px;
+        height: 100%;
+        background: linear-gradient(to bottom, var(--accent-primary), var(--accent-gradient-end));
+    }
+
+    .timeline-event {
+        /* 重設由 JS 計算的絕對定位，讓卡片自然堆疊 */
+        position: relative;
+        left: 0 !important; /* 覆蓋 JS 的行內樣式 */
+        top: auto !important; /* 覆蓋 JS 的行內樣式 */
+        width: 100%;
+        margin-bottom: 30px;
+        transform: none !important; /* 移除所有 JS 的 transform 效果 */
+        z-index: 1 !important;
+    }
+
+    /* 為每個事件在垂直線上添加一個圓點 */
+    .timeline-event::before {
+        content: '';
+        position: absolute;
+        /* 將圓點精確定位到垂直線上 */
+        left: -24px;
+        top: 20px; /* 大致對齊年份文字的高度 */
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background-color: var(--event-color, #BDC3C7);
+        border: 3px solid var(--bg-secondary);
+        z-index: 2;
+    }
+
+    .timeline-event .event-bubble {
+        /* 移除 up/down 的位移效果，並調整文字對齊 */
+        transform: none !important;
+        text-align: left;
+        padding-left: 20px;
+    }
+
+    /* 在手機上禁用點擊放大效果，避免佈局錯亂 */
+    .timeline-event.active {
+        --card-scale: 1;
+    }
 }
