@@ -2,83 +2,83 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 1. 歷史事件資料 ---
     const eventsData = [
         // 早期關鍵技術與發明 ( category: tech )
-    { name: "半導體積體電路發明", year: 1958, answered: false, category: 'tech' },
-    { name: "網際網路前身ARPANET上線", year: 1969, answered: false, category: 'tech' },
-    { name: "個人電腦(PC)概念誕生", year: 1974, answered: false, category: 'tech' },
-    { name: "WWW全球資訊網發明", year: 1989, answered: false, category: 'tech' },
-    { name: "Wi-Fi技術標準問世", year: 1997, answered: false, category: 'tech' },
-    { year: 1991, name: 'Linux 核心首次發布', category: 'tech' },
+        { name: "半導體積體電路發明", year: 1958, answered: false, category: 'tech' },
+        { name: "網際網路前身ARPANET上線", year: 1969, answered: false, category: 'tech' },
+        { name: "個人電腦(PC)概念誕生", year: 1974, answered: false, category: 'tech' },
+        { name: "WWW全球資訊網發明", year: 1989, answered: false, category: 'tech' },
+        { name: "Wi-Fi技術標準問世", year: 1997, answered: false, category: 'tech' },
+        { year: 1991, name: 'Linux 核心首次發布', category: 'tech' },
 
-    // 重要公司創立與里程碑 ( category: company )
-    { name: "Intel成立", year: 1968, answered: false, category: 'company' },
-    { name: "Sony（索尼）成立", year: 1946, answered: false, category: 'company' }, // 新增：Sony
-    { name: "Microsoft成立", year: 1975, answered: false, category: 'company' },
-    { name: "Apple成立", year: 1976, answered: false, category: 'company' },
-    { name: "Cisco Systems成立", year: 1984, answered: false, category: 'company' },
-    { name: "Dell (戴爾)成立", year: 1984, answered: false, category: 'company' },
-    { name: "ASML (艾司摩爾)成立", year: 1984, answered: false, category: 'company' },
-    { name: "TSMC (台積電)成立", year: 1987, answered: false, category: 'company' },
-    { name: "NVIDIA成立", year: 1993, answered: false, category: 'company' },
-    { name: "Amazon成立", year: 1994, answered: false, category: 'company' },
-    { name: "Google成立", year: 1998, answered: false, category: 'company' },
-    { name: "Facebook成立", year: 2004, answered: false, category: 'company' },
-    
-    // 中國科技 ( category: china-tech )
-    { name: "華為（Huawei）成立", year: 1987, answered: false, category: 'china-tech' },
-    { name: "馬化騰成立騰訊", year: 1998, answered: false, category: 'china-tech' },
-    { name: "馬雲成立阿里巴巴", year: 1999, answered: false, category: 'china-tech' },
-    { name: "李彥宏成立百度", year: 2000, answered: false, category: 'china-tech' },
-    { name: "小米（Xiaomi）成立", year: 2010, answered: false, category: 'china-tech' },
-    { name: "OPPO 成立", year: 2004, answered: false, category: 'china-tech' },
-    { name: "vivo 成立", year: 2009, answered: false, category: 'china-tech' },    
-    // AI 技術與重大突破 ( category: ai )
-    { year: 1956, name: '第一次 AI 會議 (達特茅斯會議)', category: 'ai' },
-    { name: "深度學習概念提出", year: 1986, answered: false, category: 'ai' },
-    { name: "IBM Deep Blue 擊敗世界棋王", year: 1997, answered: false, category: 'ai' },
-    { name: "Google 發表 AlphaGo", year: 2015, answered: false, category: 'ai' },
-    { name: "Google AlphaGo 擊敗李世乭", year: 2016, answered: false, category: 'ai' },
-    { name: "OpenAI 發布 GPT-3", year: 2020, answered: false, category: 'ai' },
-    { name: "ChatGPT 首次發布", year: 2022, answered: false, category: 'ai' },
-    { year: 2012, name: 'AlexNet 在 ImageNet 競賽中獲勝，引爆深度學習革命', category: 'ai' },
-    { year: 2015, name: 'Google 開源 TensorFlow', category: 'ai' },
+        // 重要公司創立與里程碑 ( category: company )
+        { name: "Intel成立", year: 1968, answered: false, category: 'company' },
+        { name: "Sony（索尼）成立", year: 1946, answered: false, category: 'company' }, // 新增：Sony
+        { name: "Microsoft成立", year: 1975, answered: false, category: 'company' },
+        { name: "Apple成立", year: 1976, answered: false, category: 'company' },
+        { name: "Cisco Systems成立", year: 1984, answered: false, category: 'company' },
+        { name: "Dell (戴爾)成立", year: 1984, answered: false, category: 'company' },
+        { name: "ASML (艾司摩爾)成立", year: 1984, answered: false, category: 'company' },
+        { name: "TSMC (台積電)成立", year: 1987, answered: false, category: 'company' },
+        { name: "NVIDIA成立", year: 1993, answered: false, category: 'company' },
+        { name: "Amazon成立", year: 1994, answered: false, category: 'company' },
+        { name: "Google成立", year: 1998, answered: false, category: 'company' },
+        { name: "Facebook成立", year: 2004, answered: false, category: 'company' },
 
-    // 遊戲主機與行動裝置 ( category: device )
-    { name: "第一款商用遊戲主機 Magnavox Odyssey", year: 1972, answered: false, category: 'device' },
-    { name: "任天堂推出紅白機 (Famicom/NES)", year: 1983, answered: false, category: 'device' },
-    { name: "Sony PlayStation 發售", year: 1994, answered: false, category: 'device' },
-    { name: "Microsoft Xbox 發售", year: 2001, answered: false, category: 'device' },
-    { name: "Sony PlayStation 2 發售", year: 2000, answered: false, category: 'device' },
-    { name: "Nintendo Switch 發售", year: 2017, answered: false, category: 'device' },
-    { name: "Motorola推出第一款商用手機", year: 1983, answered: false, category: 'device' },
-    { name: "Nokia 推出 3310 手機", year: 2000, answered: false, category: 'device' },
-    { name: "第一個iPhone發布", year: 2007, answered: false, category: 'device' },
-    { name: "iPad 平板電腦發布", year: 2010, answered: false, category: 'device' },
-    { year: 1971, name: 'Intel 4004 微處理器', category: 'device' },
-    
-    // 其他與趨勢 ( category: others )
-    { name: "區塊鏈技術概念提出", year: 2008, answered: false, category: 'others' },
-    { name: "阿里巴巴在香港上市", year: 2007, answered: false, category: 'others' },
-    { year: 2001, name: '維基百科上線', category: 'others' },
-    { year: 2008, name: '比特幣白皮書發布', category: 'others' },
+        // 中國科技 ( category: china-tech )
+        { name: "華為（Huawei）成立", year: 1987, answered: false, category: 'china-tech' },
+        { name: "馬化騰成立騰訊", year: 1998, answered: false, category: 'china-tech' },
+        { name: "馬雲成立阿里巴巴", year: 1999, answered: false, category: 'china-tech' },
+        { name: "李彥宏成立百度", year: 2000, answered: false, category: 'china-tech' },
+        { name: "小米（Xiaomi）成立", year: 2010, answered: false, category: 'china-tech' },
+        { name: "OPPO 成立", year: 2004, answered: false, category: 'china-tech' },
+        { name: "vivo 成立", year: 2009, answered: false, category: 'china-tech' },
+        // AI 技術與重大突破 ( category: ai )
+        { year: 1956, name: '第一次 AI 會議 (達特茅斯會議)', category: 'ai' },
+        { name: "深度學習概念提出", year: 1986, answered: false, category: 'ai' },
+        { name: "IBM Deep Blue 擊敗世界棋王", year: 1997, answered: false, category: 'ai' },
+        { name: "Google 發表 AlphaGo", year: 2015, answered: false, category: 'ai' },
+        { name: "Google AlphaGo 擊敗李世乭", year: 2016, answered: false, category: 'ai' },
+        { name: "OpenAI 發布 GPT-3", year: 2020, answered: false, category: 'ai' },
+        { name: "ChatGPT 首次發布", year: 2022, answered: false, category: 'ai' },
+        { year: 2012, name: 'AlexNet 在 ImageNet 競賽中獲勝，引爆深度學習革命', category: 'ai' },
+        { year: 2015, name: 'Google 開源 TensorFlow', category: 'ai' },
 
-    // 程式語言 ( category: programming )
-    { name: "C 語言誕生", year: 1972, answered: false, category: 'programming' },
-    { name: "C++ 語言誕生", year: 1983, answered: false, category: 'programming' },
-    { name: "Python 語言發布", year: 1991, answered: false, category: 'programming' },
-    { name: "Java 語言發布", year: 1995, answered: false, category: 'programming' },
-    { name: "JavaScript 語言發布", year: 1995, answered: false, category: 'programming' },
-    { name: "PHP 語言發布", year: 1995, answered: false, category: 'programming' },
-    { name: "C# 語言發布", year: 2000, answered: false, category: 'programming' },
-    { name: "Ruby on Rails 框架發布", year: 2004, answered: false, category: 'programming' },
-    { name: "Swift 語言發布", year: 2014, answered: false, category: 'programming' },
+        // 遊戲主機與行動裝置 ( category: device )
+        { name: "第一款商用遊戲主機 Magnavox Odyssey", year: 1972, answered: false, category: 'device' },
+        { name: "任天堂推出紅白機 (Famicom/NES)", year: 1983, answered: false, category: 'device' },
+        { name: "Sony PlayStation 發售", year: 1994, answered: false, category: 'device' },
+        { name: "Microsoft Xbox 發售", year: 2001, answered: false, category: 'device' },
+        { name: "Sony PlayStation 2 發售", year: 2000, answered: false, category: 'device' },
+        { name: "Nintendo Switch 發售", year: 2017, answered: false, category: 'device' },
+        { name: "Motorola推出第一款商用手機", year: 1983, answered: false, category: 'device' },
+        { name: "Nokia 推出 3310 手機", year: 2000, answered: false, category: 'device' },
+        { name: "第一個iPhone發布", year: 2007, answered: false, category: 'device' },
+        { name: "iPad 平板電腦發布", year: 2010, answered: false, category: 'device' },
+        { year: 1971, name: 'Intel 4004 微處理器', category: 'device' },
 
-    // 台灣資訊科技公司 ( category: taiwan-company )
-    { name: "宏碁（Acer）成立", year: 1976, answered: false, category: 'taiwan-company' },
-    { name: "華碩（ASUS）成立", year: 1989, answered: false, category: 'taiwan-company' },
-    { name: "宏達電（HTC）成立", year: 1997, answered: false, category: 'taiwan-company' },
-    { name: "聯發科（MediaTek）成立", year: 1997, answered: false, category: 'taiwan-company' },
-    { name: "趨勢科技（Trend Micro）成立", year: 1988, answered: false, category: 'taiwan-company' },
-    { name: "台達電（Delta）成立", year: 1971, answered: false, category: 'taiwan-company' },
+        // 其他與趨勢 ( category: others )
+        { name: "區塊鏈技術概念提出", year: 2008, answered: false, category: 'others' },
+        { name: "阿里巴巴在香港上市", year: 2007, answered: false, category: 'others' },
+        { year: 2001, name: '維基百科上線', category: 'others' },
+        { year: 2008, name: '比特幣白皮書發布', category: 'others' },
+
+        // 程式語言 ( category: programming )
+        { name: "C 語言誕生", year: 1972, answered: false, category: 'programming' },
+        { name: "C++ 語言誕生", year: 1983, answered: false, category: 'programming' },
+        { name: "Python 語言發布", year: 1991, answered: false, category: 'programming' },
+        { name: "Java 語言發布", year: 1995, answered: false, category: 'programming' },
+        { name: "JavaScript 語言發布", year: 1995, answered: false, category: 'programming' },
+        { name: "PHP 語言發布", year: 1995, answered: false, category: 'programming' },
+        { name: "C# 語言發布", year: 2000, answered: false, category: 'programming' },
+        { name: "Ruby on Rails 框架發布", year: 2004, answered: false, category: 'programming' },
+        { name: "Swift 語言發布", year: 2014, answered: false, category: 'programming' },
+
+        // 台灣資訊科技公司 ( category: taiwan-company )
+        { name: "宏碁（Acer）成立", year: 1976, answered: false, category: 'taiwan-company' },
+        { name: "華碩（ASUS）成立", year: 1989, answered: false, category: 'taiwan-company' },
+        { name: "宏達電（HTC）成立", year: 1997, answered: false, category: 'taiwan-company' },
+        { name: "聯發科（MediaTek）成立", year: 1997, answered: false, category: 'taiwan-company' },
+        { name: "趨勢科技（Trend Micro）成立", year: 1988, answered: false, category: 'taiwan-company' },
+        { name: "台達電（Delta）成立", year: 1971, answered: false, category: 'taiwan-company' },
     ];
 
     // --- 2. 快取 DOM 元素 ---
