@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: "OPPO 成立", year: 2004, answered: false, category: 'china-tech' },
         { name: "vivo 成立", year: 2009, answered: false, category: 'china-tech' },
         // AI 技術與重大突破 ( category: ai )
+        {year: 1950, name: '圖靈提出圖靈測試', category: 'ai'},
         { year: 1956, name: '第一次 AI 會議 (達特茅斯會議)', category: 'ai' },
         { name: "深度學習概念提出", year: 1986, answered: false, category: 'ai' },
         { name: "IBM Deep Blue 擊敗世界棋王", year: 1997, answered: false, category: 'ai' },
