@@ -4,7 +4,7 @@ const events = [
     { name: "半導體積體電路發明", year: 1958, answered: false, category: 'tech' },
     { name: "網際網路前身ARPANET上線", year: 1969, answered: false, category: 'tech' },
     { name: "個人電腦(PC)概念誕生", year: 1974, answered: false, category: 'tech' },
-    { name: "WWW萬維網發明", year: 1989, answered: false, category: 'tech' },
+    { name: "WWW全球資訊網發明", year: 1989, answered: false, category: 'tech' },
     { name: "Wi-Fi技術標準問世", year: 1997, answered: false, category: 'tech' },
 
     // 重要公司創立與里程碑 ( category: company )
