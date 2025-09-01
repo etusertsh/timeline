@@ -179,43 +179,41 @@ h1 {
 }
 
 /* 各類別專屬的樣式 */
+.timeline-event .event-bubble {
+    background-color: var(--event-color, #BDC3C7); /* 預設顏色 */
+    border: 1px solid var(--event-border-color, #A0A0A0);
+    box-shadow: 0 0 8px var(--event-color, #BDC3C7);
+}
+
 .timeline-event.tech .event-bubble {
-    background-color: #00FFFF;
-    border: 1px solid #00E5E5;
-    box-shadow: 0 0 8px #00FFFF;
+    --event-color: #00FFFF;
+    --event-border-color: #00E5E5;
 }
 .timeline-event.company .event-bubble {
-    background-color: #F8B400;
-    border: 1px solid #FFCC00;
-    box-shadow: 0 0 8px #FFCC00;
+    --event-color: #F8B400;
+    --event-border-color: #FFCC00;
 }
 .timeline-event.taiwan-company .event-bubble {
-    background-color: #FF7F50;
-    border: 1px solid #E57345;
-    box-shadow: 0 0 8px #FF7F50;
+    --event-color: #FF7F50;
+    --event-border-color: #E57345;
 }
 .timeline-event.china-tech .event-bubble { /* 這裡已修改 */
-    background-color: #FF5733;
-    border: 1px solid #E54B2A;
-    box-shadow: 0 0 8px #FF5733;
+    --event-color: #FF5733;
+    --event-border-color: #E54B2A;
 }
 .timeline-event.ai .event-bubble {
-    background-color: #9B59B6;
-    border: 1px solid #8E44AD;
-    box-shadow: 0 0 8px #9B59B6;
+    --event-color: #9B59B6;
+    --event-border-color: #8E44AD;
 }
 .timeline-event.device .event-bubble {
-    background-color: #2ECC71;
-    border: 1px solid #27AE60;
-    box-shadow: 0 0 8px #2ECC71;
+    --event-color: #2ECC71;
+    --event-border-color: #27AE60;
 }
 .timeline-event.programming .event-bubble {
-    background-color: #3498DB;
-    border: 1px solid #2980B9;
-    box-shadow: 0 0 8px #3498DB;
+    --event-color: #3498DB;
+    --event-border-color: #2980B9;
 }
 .timeline-event.others .event-bubble {
-    background-color: #BDC3C7;
-    border: 1px solid #A0A0A0;
-    box-shadow: 0 0 8px #BDC3C7;
+    --event-color: #BDC3C7;
+    --event-border-color: #A0A0A0;
 }
