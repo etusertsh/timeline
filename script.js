@@ -8,6 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: "WWW全球資訊網發明", year: 1989, answered: false, category: 'tech' },
         { name: "Wi-Fi技術標準問世", year: 1997, answered: false, category: 'tech' },
         { year: 1991, name: 'Linux 核心首次發布', category: 'tech' },
+        { year: 1990, name: "微軟推出windows3.0", category: 'tech' },
+        { year: 1995, name: "微軟推出windows95", category: 'tech' },
+        { year: 2015, name: "微軟推出windows10", category: 'tech' },
 
         // 重要公司創立與里程碑 ( category: company )
         { name: "Intel成立", year: 1968, answered: false, category: 'company' },
